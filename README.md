@@ -25,54 +25,55 @@ The Histogram of gray scale image and color image is shown.
 
 
 ## Program:
+### Developed By:LOGU R
+### REG NO : 212224230141
 ```python
-# Developed By: AALIYA FATHIMA.M
-# Register Number: 212223230001
-
 import cv2
-import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt 
+Gray_image=cv2.imread("Lion image.jpeg")
+plt.imshow(Gray_image)
+plt.show()
+Color_image=cv2.imread("shinchan Image.jpeg")
+plt.imshow(Color_image)
+plt.show()
 
-image = cv2.imread('Qn4.jpg')
+# code to find the histogram of gray scale image and color image channels.
 
-gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+hist = cv2.calcHist([Gray_image],[0],None,[256],[0,256])
+plt.figure()
+plt.title("Histogram")
+plt.xlabel('gray_scale value')
+plt.ylabel('pixel count')
+plt.stem(hist)
+plt.show()
 
-hist_original = cv2.calcHist([gray_image], [0], None, [256], [0, 256])
+# Display the histogram of gray scale image and any one channel histogram from color image
 
-equalized_image = cv2.equalizeHist(gray_image)
+hist1 = cv2.calcHist([Color_image],[0],None,[256],[0,256]) 
+plt.figure()
+plt.title("Histogram")
+plt.xlabel('color_scale value') 
+plt.ylabel('pixel count')
+plt.stem(hist1)
+plt.show()
 
-hist_equalized = cv2.calcHist([equalized_image], [0], None, [256], [0, 256])
+# Write the code to perform histogram equalization of the image.
 
-plt.figure(figsize=(10, 7))
-
-plt.subplot(2, 2, 1)
-plt.imshow(gray_image, cmap='gray')
-plt.title('Original Grayscale Image')
-plt.axis('off')
-
-plt.subplot(2, 2, 2)
-plt.imshow(equalized_image, cmap='gray')
-plt.title('Equalized Image')
-plt.axis('off')
-
-plt.subplot(2, 2, 3)
-plt.plot(hist_original, color='black')
-plt.title('Original Histogram')
-plt.xlim([0, 256])
-
-
-
-plt.subplot(2, 2, 4)
-plt.plot(hist_equalized, color='black')
-plt.title('Equalized Histogram')
-plt.xlim([0, 256])
-
-plt.tight_layout()
+equ1=cv2.equalizeHist(cv2.imread('shinchan Image.jpeg',0)) 
+equ=cv2.cvtColor(equ1,cv2.COLOR_BGR2RGB) 
+plt.title("Equalised Image")
+plt.axis("off")
+plt.imshow(equ) 
 plt.show()
 
 ```
 ## Output:
-<img width="1020" height="660" alt="image" src="https://github.com/user-attachments/assets/bba06af7-8369-4d8b-80cb-2b3aaddfe5dd" />
+<img width="610" height="662" alt="image" src="https://github.com/user-attachments/assets/fdf8198e-e7c6-4b5f-8c6f-71eb6b5bddf4" />
+<img width="595" height="438" alt="image" src="https://github.com/user-attachments/assets/3b9286f8-7a6c-45f1-ab99-68154e8ebf8e" />
+<img width="616" height="434" alt="image" src="https://github.com/user-attachments/assets/482ed601-5102-4213-a0be-a0edc857eff5" />
+<img width="527" height="319" alt="image" src="https://github.com/user-attachments/assets/2ae64e65-b42b-4a00-ab9e-fc2fcd62a865" />
+
+
 
 
 
